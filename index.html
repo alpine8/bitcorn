@@ -5,20 +5,27 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CornStats</title>
   <link rel="stylesheet" href="styles.css">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
 </head>
 <body>
   <header>
+    <a href="https://bitcoin.org/bitcoin.pdf" target="_blank" rel="noopener noreferrer">
+    <img src="https://i.imgur.com/CisvEJI.png" alt="CornStats Logo" class="logo">
+    </a>
     <h1>CornStats</h1>
   </header>
   <main>
     <div class="flex-container">
-      <div class="card">
+      <div class="card live-price-card">
         <h2>Live Price 💰</h2>
-        <p>BTC = <span id="btc-price">Loading...</span></p>
+        <p><span id="btc-price">Loading...</span></p>
       </div>
       <div class="card">
-        <h2>Hash Rate 🔋</h2>
-        <p><span id="hash-rate">Loading...</span> <span class="hash-unit">EH/s</span></p>
+        <h2>Mining Stats🔋</h2>
+        <p>
+          <span class="label">Hash Rate:</span> <span id="hash-rate" class="value">Loading... EH/s</span><br>
+          <span class="label">Mining Difficulty:</span> <span id="mining-difficulty" class="value">...</span>
+        </p>
       </div>
       <div class="card">
         <h2>Fee Rates 🪣</h2>
