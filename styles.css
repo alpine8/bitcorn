@@ -42,14 +42,6 @@ main {
   justify-content: center;
 }
 
-.live-price-card {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-}
-
 .card {
   background: #2c2c2c;
   padding: 1.5rem;
