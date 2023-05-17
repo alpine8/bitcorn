@@ -30,6 +30,14 @@ async function fetchBitcoinPrice() {
 
 // HOW MUCH CORN???
 
+function showSpinner() {
+  document.getElementById("spinner").style.display = "inline-block";
+}
+
+function hideSpinner() {
+  document.getElementById("spinner").style.display = "none";
+}
+
 async function fetchCornPrice() {
   const corsProxy = 'https://api.allorigins.win/get?url=';
   const url = encodeURIComponent('https://markets.businessinsider.com/commodities/corn-price');
@@ -44,10 +52,12 @@ async function fetchCornPrice() {
 }
 
 async function updateBitcoinToCorn() {
+  showSpinner();
   const btcPrice = await fetchBitcoinPrice();
   const pricePerOunce = await fetchCornPrice();
   const btcToCorn = btcPrice / pricePerOunce;
-  document.getElementById("btc-to-corn").textContent = `${btcToCorn.toFixed(2)} Bushels`;
+  document.getElementById("btc-to-corn").textContent = `${btcToCorn.toFixed(2)} ounces of corn`;
+  hideSpinner();
 }
 
 // ALWAYS CORN!!!
