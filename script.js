@@ -4,7 +4,7 @@ const fastestFee = document.getElementById('fastest-fee');
 const halfHourFee = document.getElementById('half-hour-fee');
 const oneHourFee = document.getElementById('one-hour-fee');
 const latestBlocks = document.getElementById('latest-blocks');
-const bigMacPrice = 4.55; // Price in USD in Chicago IL
+const cornPrice = 6.54; // Price in USD, 2023 average
 
 // Fetch the current Bitcoin price
 async function fetchBitcoinPrice() {
@@ -29,10 +29,10 @@ async function fetchBitcoinPrice() {
   }
 }
 
-async function updateBitcoinToBigMacs() {
+async function updateBitcoinToCorn() {
   const btcPrice = await fetchBitcoinPrice();
-  const btcToBigMacs = btcPrice / bigMacPrice;
-  document.getElementById("btc-to-bigmacs").textContent = `${btcToBigMacs.toFixed(2)} Big Macs`;
+  const btcToCorn = btcPrice / cornPrice;
+  document.getElementById("btc-to-corn").textContent = `${btcToCorn.toFixed(2)} ounces of corn`;
 }
 
 // Fetch Bitcoin fee rates
@@ -260,7 +260,7 @@ fetchLatestBlocks();
 fetchBitcoinData();
 fetchBitcoinHashRate();
 fetchLightningStats();
-updateBitcoinToBigMacs();
+updateBitcoinToCorn();
 
 setInterval(fetchBitcoinPrice, 7000); // Update the price every 7 seconds (7,000 ms)
 setInterval(fetchBitcoinFeeRates, 10000); // Update the fee rates every 10 seconds (10,000 ms)
