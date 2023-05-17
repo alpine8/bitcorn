@@ -33,7 +33,7 @@
         <h2>Mining Stats ⚒️</h2>
         <p>
           <span class="label">Hash Rate:</span> <span id="hash-rate" class="value">Loading... EH/s</span><br>
-          <span class="label">Mining Difficulty:</span> <span id="mining-difficulty" class="value">...</span>
+          <span class="label">Mining Difficulty:</span> <span id="mining-difficulty" class="value">...</span><br>
         </p>
       </div>
       <div class="card">
@@ -59,6 +59,7 @@
         <div id="progress-bar"></div>
       </div>
       <p id="progress-percent"></p>
+      <p>Blocks left to be mined: <span id="blocks-left"></span></p>
     </div>
 
     <!-- Countdown script -->
@@ -76,34 +77,39 @@
   setInterval(updateCountdown, 1000);
 
   function updateCountdown() {
-    const currentDate = new Date().getTime();
-    const remainingTime = targetDate - currentDate;
+  const currentDate = new Date().getTime();
+  const remainingTime = targetDate - currentDate;
 
-    if (remainingTime > 0) {
-      const days = Math.floor(remainingTime / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((remainingTime % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      const minutes = Math.floor((remainingTime % (1000 * 60 * 60)) / (1000 * 60));
-      const seconds = Math.floor((remainingTime % (1000 * 60)) / 1000);
+  if (remainingTime > 0) {
+    const days = Math.floor(remainingTime / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((remainingTime % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((remainingTime % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((remainingTime % (1000 * 60)) / 1000);
 
-      // Update the countdown element
-      document.getElementById("days").innerHTML = days;
-      document.getElementById("hours").innerHTML = hours;
-      document.getElementById("minutes").innerHTML = minutes;
-      document.getElementById("seconds").innerHTML = seconds;
-      
-      // Update the progress bar
-      const elapsedDuration = currentDate - startDate;
-      const progressPercentage = (elapsedDuration / totalDuration) * 100;
-      document.getElementById("progress-bar").style.width = progressPercentage + "%";
-      document.getElementById("progress-percent").innerHTML = progressPercentage.toFixed(2) + "%";
-    } else {
-      // When the countdown is finished, update the text
-      document.getElementById("countdown-text").innerHTML = "The halving event has occurred!";
-      document.getElementById("countdown").style.display = "none";
-      document.getElementById("progress-bar").style.width = "100%";
-      document.getElementById("progress-percent").innerHTML = "100.00%";
-    }
+    // Update the countdown element
+    document.getElementById("days").innerHTML = days;
+    document.getElementById("hours").innerHTML = hours;
+    document.getElementById("minutes").innerHTML = minutes;
+    document.getElementById("seconds").innerHTML = seconds;
+
+    // Update the progress bar
+    const elapsedDuration = currentDate - startDate;
+    const progressPercentage = (elapsedDuration / totalDuration) * 100;
+    document.getElementById("progress-bar").style.width = progressPercentage + "%";
+    document.getElementById("progress-percent").innerHTML = progressPercentage.toFixed(2) + "%";
+
+    // Calculate and update the number of blocks left
+    const blocksPerDay = 144;
+    const blocksLeft = Math.round(days * blocksPerDay);
+    document.getElementById("blocks-left").innerHTML = blocksLeft;
+  } else {
+    // When the countdown is finished, update the text
+    document.getElementById("countdown-text").innerHTML = "The halving event has occurred!";
+    document.getElementById("countdown").style.display = "none";
+    document.getElementById("progress-bar").style.width = "100%";
+    document.getElementById("progress-percent").innerHTML = "100.00%";
   }
+}
 
   // Run the updateCountdown function once to avoid an initial 1-second delay
   updateCountdown();
