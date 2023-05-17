@@ -13,12 +13,12 @@ async function fetchBitcoinPrice() {
     const price = data.data.rateUsd;
     btcPrice.textContent = `${parseFloat(price).toFixed(2)} USD`;
 
-    // Add the flash-white class to animate the text
-    btcPrice.classList.add('flash-white');
+    // Add the flash class to animate the text
+    btcPrice.classList.add('flash');
 
-    // Remove the flash-white class after the animation is completed
+    // Remove the flash class after the animation is completed
     setTimeout(() => {
-      btcPrice.classList.remove('flash-white');
+      btcPrice.classList.remove('flash');
     }, 1000);
   } catch (error) {
     console.error('Error fetching Bitcoin price:', error);
@@ -35,15 +35,15 @@ async function fetchBitcoinFeeRates() {
     oneHourFee.textContent = `${data.hourFee} sat/vB`;
 
     // Add the flash-white class to the elements
-    fastestFee.classList.add('flash-white');
-    halfHourFee.classList.add('flash-white');
-    oneHourFee.classList.add('flash-white');
+    fastestFee.classList.add('flash');
+    halfHourFee.classList.add('flash');
+    oneHourFee.classList.add('flash');
 
     // Remove the flash-white class after the animation has completed (1 second)
     setTimeout(() => {
-      fastestFee.classList.remove('flash-white');
-      halfHourFee.classList.remove('flash-white');
-      oneHourFee.classList.remove('flash-white');
+      fastestFee.classList.remove('flash');
+      halfHourFee.classList.remove('flash');
+      oneHourFee.classList.remove('flash');
     }, 1000);
 
   } catch (error) {
@@ -73,7 +73,10 @@ async function fetchLatestBlocks() {
 
       // Block Height
       const blockHeight = document.createElement('td');
-      blockHeight.textContent = block.height;
+      const blockHeightLink = document.createElement('a');
+      blockHeightLink.href = `https://mempool.space/block/${block.id}`;
+      blockHeightLink.textContent = block.height;
+      blockHeight.appendChild(blockHeightLink);
       row.appendChild(blockHeight);
 
       // Timestamp
@@ -151,7 +154,7 @@ async function fetchBitcoinHashRate() {
   try {
     const response = await fetch('https://blockchain.info/q/hashrate');
     const hashRate = await response.text();
-    document.getElementById('hash-rate').textContent = parseFloat(hashRate / 1e9).toFixed(2);
+    document.getElementById('hash-rate').textContent = parseFloat(hashRate / 1e9).toFixed(2) + " EH/s";
   } catch (error) {
     console.error('Error fetching Bitcoin hash rate:', error);
   }
@@ -190,8 +193,15 @@ function fetchLightningStats() {
     .catch(error => console.error('Error fetching Lightning Network statistics:', error));
 }
 
+async function fetchMiningDifficulty() {
+  const response = await fetch('https://blockchain.info/q/getdifficulty');
+  const difficulty = await response.text();
+  const teraDifficulty = parseFloat(difficulty) / 1e12;
+  document.getElementById('mining-difficulty').innerText = teraDifficulty.toFixed(2) + ' T';
+}
 
 
+fetchMiningDifficulty();
 fetchBitcoinPrice();
 fetchBitcoinFeeRates();
 fetchLatestBlocks();
@@ -199,7 +209,7 @@ fetchBitcoinData();
 fetchBitcoinHashRate();
 fetchLightningStats();
 
-setInterval(fetchBitcoinPrice, 2000); // Update the price every 2 seconds (2,000 ms)
+setInterval(fetchBitcoinPrice, 7000); // Update the price every 7 seconds (7,000 ms)
 setInterval(fetchBitcoinFeeRates, 10000); // Update the fee rates every 10 seconds (10,000 ms)
 setInterval(fetchLatestBlocks, 60000); // Update the latest blocks every 60 seconds (60,000 ms)
 setInterval(fetchBitcoinHashRate, 60000); // Update the hash rate every 60 seconds (60,000 ms)
