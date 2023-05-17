@@ -4,6 +4,7 @@ const fastestFee = document.getElementById('fastest-fee');
 const halfHourFee = document.getElementById('half-hour-fee');
 const oneHourFee = document.getElementById('one-hour-fee');
 const latestBlocks = document.getElementById('latest-blocks');
+const bigMacPrice = 4.55; // Price in USD in Chicago IL
 
 // Fetch the current Bitcoin price
 async function fetchBitcoinPrice() {
@@ -20,9 +21,18 @@ async function fetchBitcoinPrice() {
     setTimeout(() => {
       btcPrice.classList.remove('flash');
     }, 1000);
+
+    // Return the fetched price
+    return parseFloat(price);
   } catch (error) {
     console.error('Error fetching Bitcoin price:', error);
   }
+}
+
+async function updateBitcoinToBigMacs() {
+  const btcPrice = await fetchBitcoinPrice();
+  const btcToBigMacs = btcPrice / bigMacPrice;
+  document.getElementById("btc-to-bigmacs").textContent = `${btcToBigMacs.toFixed(2)} Big Macs`;
 }
 
 // Fetch Bitcoin fee rates
@@ -201,6 +211,8 @@ async function fetchMiningDifficulty() {
 }
 
 
+
+
 fetchMiningDifficulty();
 fetchBitcoinPrice();
 fetchBitcoinFeeRates();
@@ -208,9 +220,11 @@ fetchLatestBlocks();
 fetchBitcoinData();
 fetchBitcoinHashRate();
 fetchLightningStats();
+updateBitcoinToBigMacs();
 
 setInterval(fetchBitcoinPrice, 7000); // Update the price every 7 seconds (7,000 ms)
 setInterval(fetchBitcoinFeeRates, 10000); // Update the fee rates every 10 seconds (10,000 ms)
 setInterval(fetchLatestBlocks, 60000); // Update the latest blocks every 60 seconds (60,000 ms)
 setInterval(fetchBitcoinHashRate, 60000); // Update the hash rate every 60 seconds (60,000 ms)
 setInterval(fetchLightningStats, 120000); // Update the Lightning Stats every 2 minutes
+setInterval(updateBitcoinToBigMacs, 60000); // Update the conversion every minute

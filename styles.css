@@ -125,8 +125,8 @@ main {
   text-decoration: underline;
 }
 
-#btc-price, #hash-rate {
-  font-size: 2em;
+#btc-price, #hash-rate, #btc-to-bigmacs {
+  font-size: 1.75em;
 }
 
 #mining-difficulty {
@@ -174,4 +174,10 @@ main {
 
 .value {
   color: orange;
+}
+
+.separator {
+  border: none;
+  border-top: 1px solid #ccc;
+  margin: 10px 0;
 }
