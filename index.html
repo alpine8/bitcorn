@@ -10,9 +10,15 @@
 <body>
   <header>
     <a href="https://bitcoin.org/bitcoin.pdf" target="_blank" rel="noopener noreferrer">
-    <img src="https://i.imgur.com/CisvEJI.png" alt="CornStats Logo" class="logo">
+      <img src="https://i.imgur.com/CisvEJI.png" alt="Logo" class="logo" />
     </a>
     <h1>CornStats</h1>
+  
+    <!-- Add the quote card here -->
+    <div class="card quote-card">
+      <p id="quote-text">Loading...</p>
+      <p id="quote-source">- Satoshi Nakamoto</p>
+    </div>
   </header>
   <main>
     <div class="flex-container">
@@ -24,7 +30,7 @@
         <p><span id="btc-to-bigmacs">Loading...</span></p>
       </div>
       <div class="card">
-        <h2>Mining Stats🔋</h2>
+        <h2>Mining Stats ⚒️</h2>
         <p>
           <span class="label">Hash Rate:</span> <span id="hash-rate" class="value">Loading... EH/s</span><br>
           <span class="label">Mining Difficulty:</span> <span id="mining-difficulty" class="value">...</span>

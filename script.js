@@ -210,9 +210,32 @@ async function fetchMiningDifficulty() {
   document.getElementById('mining-difficulty').innerText = teraDifficulty.toFixed(2) + ' T';
 }
 
+async function fetchQuotes() {
+  const response = await fetch('quotes.txt');
+  const text = await response.text();
+  const quotes = text.split('\n').map(quote => quote.trim());
+  return quotes;
+}
+
+function displayQuote(quotes) {
+  const quoteTextElement = document.getElementById('quote-text');
+  const quoteSourceElement = document.getElementById('quote-source');
+  const randomIndex = Math.floor(Math.random() * quotes.length);
+  const quote = quotes[randomIndex];
+  quoteTextElement.textContent = quote;
+  quoteSourceElement.textContent = '- Satoshi Nakamoto';
+}
+
+async function cycleQuotes() {
+  const quotes = await fetchQuotes();
+  displayQuote(quotes);
+  setInterval(() => {
+    displayQuote(quotes);
+  }, 10000); // Change quotes every 10 seconds
+}
 
 
-
+cycleQuotes();
 fetchMiningDifficulty();
 fetchBitcoinPrice();
 fetchBitcoinFeeRates();
