@@ -4,7 +4,6 @@ const fastestFee = document.getElementById('fastest-fee');
 const halfHourFee = document.getElementById('half-hour-fee');
 const oneHourFee = document.getElementById('one-hour-fee');
 const latestBlocks = document.getElementById('latest-blocks');
-const cornPrice = 6.54; // Price in USD, 2023 average
 
 // Fetch the current Bitcoin price
 async function fetchBitcoinPrice() {
@@ -29,11 +28,29 @@ async function fetchBitcoinPrice() {
   }
 }
 
+// HOW MUCH CORN???
+
+async function fetchCornPrice() {
+  const corsProxy = 'https://api.allorigins.win/get?url=';
+  const url = encodeURIComponent('https://markets.businessinsider.com/commodities/corn-price');
+  const response = await fetch(corsProxy + url);
+  const data = await response.json();
+  const html = data.contents;
+  const parser = new DOMParser();
+  const doc = parser.parseFromString(html, 'text/html');
+  const priceElement = doc.querySelector('.price-section__current-value');
+  const pricePerOunce = parseFloat(priceElement.textContent);
+  return pricePerOunce;
+}
+
 async function updateBitcoinToCorn() {
   const btcPrice = await fetchBitcoinPrice();
-  const btcToCorn = btcPrice / cornPrice;
-  document.getElementById("btc-to-corn").textContent = `${btcToCorn.toFixed(2)} ounces of corn`;
+  const pricePerOunce = await fetchCornPrice();
+  const btcToCorn = btcPrice / pricePerOunce;
+  document.getElementById("btc-to-corn").textContent = `${btcToCorn.toFixed(2)} Bushels`;
 }
+
+// ALWAYS CORN!!!
 
 // Fetch Bitcoin fee rates
 async function fetchBitcoinFeeRates() {
