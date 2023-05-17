@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CornStats</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <h1>CornStats</h1>
+  </header>
+  <main>
+    <div class="flex-container">
+      <div class="card">
+        <h2>Live Price 💰</h2>
+        <p>BTC = <span id="btc-price">Loading...</span></p>
+      </div>
+      <div class="card">
+        <h2>Hash Rate 🔋</h2>
+        <p><span id="hash-rate">Loading...</span> <span class="hash-unit">EH/s</span></p>
+      </div>
+      <div class="card">
+        <h2>Fee Rates 🪣</h2>
+        <p><span class="fee-label">High Priority ⚡</span></p>
+        <p><span class="fee-rate" id="fastest-fee">Loading...</span></p>
+        <p><span class="fee-label">Medium Priority ⏳</span></p>
+        <p><span class="fee-rate" id="half-hour-fee">Loading...</span></p>
+        <p><span class="fee-label">Low Priority 🐢</span></p>
+        <p><span class="fee-rate" id="one-hour-fee">Loading...</span></p>
+      </div>
+    </div>
+    <div class="card">
+      <h2>Next Halving Event 🌙</h2>
+      <p id="countdown-text"></p>
+      <div id="countdown">
+        <span id="days"></span> days,
+        <span id="hours"></span> hours,
+        <span id="minutes"></span> minutes,
+        <span id="seconds"></span> seconds
+      </div>
+      <div class="progress-bar-container">
+        <div id="progress-bar"></div>
+      </div>
+      <p id="progress-percent"></p>
+    </div>
+
+    <!-- Countdown script -->
+<script>
+  // Set the target date for the countdown
+  const targetDate = new Date("2024-04-28T00:00:00").getTime();
+
+  // Set the start date for the progress calculation
+  const startDate = new Date("2020-05-11T00:00:00").getTime();
+
+  // Calculate the total duration of the countdown in milliseconds
+  const totalDuration = targetDate - startDate;
+
+  // Update the countdown and progress bar every second
+  setInterval(updateCountdown, 1000);
+
+  function updateCountdown() {
+    const currentDate = new Date().getTime();
+    const remainingTime = targetDate - currentDate;
+
+    if (remainingTime > 0) {
+      const days = Math.floor(remainingTime / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((remainingTime % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((remainingTime % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((remainingTime % (1000 * 60)) / 1000);
+
+      // Update the countdown element
+      document.getElementById("days").innerHTML = days;
+      document.getElementById("hours").innerHTML = hours;
+      document.getElementById("minutes").innerHTML = minutes;
+      document.getElementById("seconds").innerHTML = seconds;
+      
+      // Update the progress bar
+      const elapsedDuration = currentDate - startDate;
+      const progressPercentage = (elapsedDuration / totalDuration) * 100;
+      document.getElementById("progress-bar").style.width = progressPercentage + "%";
+      document.getElementById("progress-percent").innerHTML = progressPercentage.toFixed(2) + "%";
+    } else {
+      // When the countdown is finished, update the text
+      document.getElementById("countdown-text").innerHTML = "The halving event has occurred!";
+      document.getElementById("countdown").style.display = "none";
+      document.getElementById("progress-bar").style.width = "100%";
+      document.getElementById("progress-percent").innerHTML = "100.00%";
+    }
+  }
+
+  // Run the updateCountdown function once to avoid an initial 1-second delay
+  updateCountdown();
+</script>
+
+    <div class="card">
+      <h2>Lightning Network ⚡</h2>
+      <table>
+        <tbody id="lightning-stats-table">
+          <!-- Lightning Network statistics will be populated here -->
+        </tbody>
+      </table>
+    </div>
+    <div class="card">
+      <h2>Latest Blocks 🍫</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Block Height</th>
+            <th>Timestamp</th>
+            <th>Transactions</th>
+          </tr>
+        </thead>
+        <tbody id="latest-blocks">
+          <!-- Latest blocks will be populated here -->
+        </tbody>
+      </table>
+    </div>
+    <div class="card">
+      <h2>Metrics 📊</h2>
+      <table>
+        <tbody id="bitcoin-data-table">
+          <!-- Bitcoin data will be populated here -->
+        </tbody>
+      </table>
+    </div>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>
