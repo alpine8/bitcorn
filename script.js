@@ -267,4 +267,4 @@ setInterval(fetchBitcoinFeeRates, 10000); // Update the fee rates every 10 secon
 setInterval(fetchLatestBlocks, 60000); // Update the latest blocks every 60 seconds (60,000 ms)
 setInterval(fetchBitcoinHashRate, 60000); // Update the hash rate every 60 seconds (60,000 ms)
 setInterval(fetchLightningStats, 120000); // Update the Lightning Stats every 2 minutes
-setInterval(updateBitcoinToBigMacs, 60000); // Update the conversion every minute
+setInterval(updateBitcoinToCorn, 60000); // Update the conversion every minute
