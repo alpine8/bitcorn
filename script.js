@@ -78,15 +78,27 @@ async function fetchLatestBlocks() {
     // Slice the data array to include only the first 10 elements
     const lastTenBlocks = data.slice(0, 10);
 
-    lastTenBlocks.forEach(block => {
+    const blockRows = await Promise.all(lastTenBlocks.map(async (block) => {
       const row = document.createElement('tr');
 
       // Block Height
       const blockHeight = document.createElement('td');
-      const blockHeightLink = document.createElement('a');
-      blockHeightLink.href = `https://mempool.space/block/${block.id}`;
-      blockHeightLink.textContent = block.height;
-      blockHeight.appendChild(blockHeightLink);
+
+      const blockHeightLinkMempool = document.createElement('a');
+      blockHeightLinkMempool.href = `https://mempool.space/block/${block.id}`;
+      blockHeightLinkMempool.textContent = block.height;
+      blockHeightLinkMempool.style.color = 'orange';
+      blockHeight.appendChild(blockHeightLinkMempool);
+
+      const separator = document.createTextNode(' | ');
+      blockHeight.appendChild(separator);
+
+      const blockHeightLinkBitfeed = document.createElement('a');
+      blockHeightLinkBitfeed.href = `https://bitfeed.live/block/${block.id}`;
+      blockHeightLinkBitfeed.textContent = block.height;
+      blockHeightLinkBitfeed.style.color = 'teal';
+      blockHeight.appendChild(blockHeightLinkBitfeed);
+
       row.appendChild(blockHeight);
 
       // Timestamp
@@ -99,8 +111,12 @@ async function fetchLatestBlocks() {
       transactions.textContent = sanitizeHTML(block.tx_count);
       row.appendChild(transactions);
 
+      return row;
+    }));
+
+    for (const row of blockRows) {
       latestBlocksTable.appendChild(row);
-    });
+    }
   } catch (error) {
     console.error('Error fetching latest Bitcoin blocks:', error);
   }
@@ -233,6 +249,7 @@ async function cycleQuotes() {
     displayQuote(quotes);
   }, 10000); // Change quotes every 10 seconds
 }
+
 
 
 cycleQuotes();
