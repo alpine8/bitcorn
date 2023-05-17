@@ -5,7 +5,7 @@
 }
 
 body {
-  font-family: Arial, sans-serif;
+  font-family: 'Proto Mono', monospace;
   line-height: 1.6;
   color: #cfcfcf;
   background: #1f1f1f;
@@ -15,6 +15,12 @@ header {
   background: #121212;
   padding: 1.5rem 0;
   text-align: center;
+}
+
+.logo {
+  width: 100px;
+  height: auto;
+  margin-right: 0px;
 }
 
 header h1 {
@@ -34,6 +40,14 @@ main {
   gap: 1rem;
   margin-bottom: 1rem;
   justify-content: center;
+}
+
+.live-price-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
 }
 
 .card {
@@ -107,4 +121,65 @@ main {
 
 .fee-label {
   font-weight: bold;
+}
+
+#latest-blocks a {
+  color: orange;
+  text-decoration: none;
+}
+
+#latest-blocks a:hover {
+  color: darkorange;
+  text-decoration: underline;
+}
+
+#btc-price, #hash-rate {
+  font-size: 2em;
+}
+
+#mining-difficulty {
+  font-size: 2em;
+}
+
+#fastest-fee, #half-hour-fee, #one-hour-fee {
+  font-size: 1.25em;
+}
+
+@keyframes flash {
+  0% {
+    color: #cfcfcf;
+  }
+  50% {
+    color: orange;
+  }
+  100% {
+    color: #cfcfcf;
+  }
+}
+
+.flash {
+  animation: flash 1s;
+}
+
+@font-face {
+  font-family: 'Proto Mono';
+  src: url('fonts/ProtoMono-Regular.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Proto Mono';
+  src: url('fonts/ProtoMono-Bold.otf') format('opentype');
+  font-weight: bold;
+  font-style: normal;
+}
+
+.label {
+  color: white;
+  font-size: 14px;
+}
+
+.value {
+  color: orange;
 }
