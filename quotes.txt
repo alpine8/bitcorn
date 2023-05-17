@@ -1,3 +1,15 @@
 There will be transaction fees, so nodes will have an incentive to receive and include all the transactions they can. Nodes will eventually be compensated by transaction fees alone when the total coins created hits the pre-determined ceiling.
 With e-currency based on cryptographic proof, without the need to trust a third party middleman, money can be secure and transactions effortless.
 I would be surprised if 10 years from now we're not using electronic currency in some way, now that we know a way to do it that won't inevitably get dumbed down when the trusted third party gets cold feet.
+Being open source means anyone can independently review the code. If it was closed source, nobody could verify the security. I think it's essential for a program of this nature to be open source.
+It's not a problem if transactions have to wait one or a few extra cycles to get into a block.
+For greater privacy, it's best to use bitcoin addresses only once.
+You could use TOR if you don't want anyone to know you're even using Bitcoin.
+Bitcoin is still very new and has not been independently analysed. If you're serious about privacy, TOR is an advisable precaution.
+Yes, but we can win a major battle in the arms race and gain a new territory of freedom for several years.
+It's very attractive to the libertarian viewpoint if we can explain it properly. I'm better with code than with words though.
+I am not Dorian Nakamoto.
+SHA-256 is very strong. It's not like the incremental step from MD5 to SHA1. It can last several decades unless there's some massive breakthrough attack.
+Governments are good at cutting off the heads of a centrally controlled networks like Napster, but pure P2P networks like Gnutella and Tor seem to be holding their own.
+Writing a description for this thing for general audiences is bloody hard. There's nothing to relate it to.
+It would have been nice to get this attention in any other context. WikiLeaks has kicked the hornet's nest, and the swarm is headed towards us.
