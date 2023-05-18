@@ -38,17 +38,10 @@ function hideSpinner() {
   document.getElementById("spinner").style.display = "none";
 }
 
-async function fetchCornPrice() {
-  const corsProxy = 'https://api.allorigins.win/get?url=';
-  const url = encodeURIComponent('https://markets.businessinsider.com/commodities/corn-price');
-  const response = await fetch(corsProxy + url);
-  const data = await response.json();
-  const html = data.contents;
-  const parser = new DOMParser();
-  const doc = parser.parseFromString(html, 'text/html');
-  const priceElement = doc.querySelector('.price-section__current-value');
-  const pricePerOunce = parseFloat(priceElement.textContent);
-  return pricePerOunce;
+async function updateBitcoinToCorn() {
+  const btcPrice = await fetchBitcoinPrice();
+  const btcToCorn = btcPrice / cornPrice;
+  document.getElementById("btc-to-corn").textContent = `${btcToCorn.toFixed(2)} ounces of corn`;
 }
 
 async function updateBitcoinToCorn() {
