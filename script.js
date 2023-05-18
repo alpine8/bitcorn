@@ -28,29 +28,13 @@ async function fetchBitcoinPrice() {
   }
 }
 
-// HOW MUCH CORN???
-
-function showSpinner() {
-  document.getElementById("spinner").style.display = "inline-block";
-}
-
-function hideSpinner() {
-  document.getElementById("spinner").style.display = "none";
-}
+// HOW MUCH CORN??? 
 
 async function updateBitcoinToCorn() {
+  const pricePerOunce = 5.60; // Price of Bushel of Corn per USD 05/17/2023
   const btcPrice = await fetchBitcoinPrice();
-  const btcToCorn = btcPrice / cornPrice;
-  document.getElementById("btc-to-corn").textContent = `${btcToCorn.toFixed(2)} ounces of corn`;
-}
-
-async function updateBitcoinToCorn() {
-  showSpinner();
-  const btcPrice = await fetchBitcoinPrice();
-  const pricePerOunce = await fetchCornPrice();
   const btcToCorn = btcPrice / pricePerOunce;
   document.getElementById("btc-to-corn").textContent = `${btcToCorn.toFixed(2)} ounces of corn`;
-  hideSpinner();
 }
 
 // ALWAYS CORN!!!
