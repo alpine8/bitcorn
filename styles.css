@@ -155,14 +155,14 @@ main {
 
 @font-face {
   font-family: 'Proto Mono';
-  src: url('fonts/ProtoMono-Regular.otf') format('opentype');
+  src: url('fonts/ProtoMono-Regular.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'Proto Mono';
-  src: url('fonts/ProtoMono-Bold.otf') format('opentype');
+  src: url('fonts/ProtoMono-SemiBold.ttf') format('truetype');
   font-weight: bold;
   font-style: normal;
 }
