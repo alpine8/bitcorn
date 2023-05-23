@@ -12,9 +12,8 @@
     <a href="https://bitcoin.org/bitcoin.pdf" target="_blank" rel="noopener noreferrer">
       <img src="cornstat.png" alt="Logo" class="logo" />
     </a>
-    <h1>CornStats</h1>
-  
-    <!-- Add the quote card here -->
+    <h1 class="cornstats-title">CornStats</h1>
+
     <div class="card quote-card">
       <p id="quote-text">Loading...</p>
       <p id="quote-source">- Satoshi Nakamoto</p>
@@ -28,7 +27,7 @@
         <hr class="separator">
         <h2>How Much Corn? 🌽</h2>
         <div id="spinner" class="spinner"></div>
-        <p><span id="btc-to-corn">Loading...</span></p>
+        <p class="btc-to-corn-value" id="btc-to-corn">Loading...</p>
       </div>
       <div class="card">
         <h2>Mining Stats ⚒️</h2>
@@ -39,11 +38,11 @@
       </div>
       <div class="card">
         <h2>Fee Rates 🪣</h2>
-        <p><span class="fee-label">High Priority ⚡</span></p>
+        <p><span class="fee-label priority-label">High Priority ⚡</span></p>
         <p><span class="fee-rate" id="fastest-fee">Loading...</span></p>
-        <p><span class="fee-label">Medium Priority ⏳</span></p>
+        <p><span class="fee-label priority-label">Medium Priority ⏳</span></p>
         <p><span class="fee-rate" id="half-hour-fee">Loading...</span></p>
-        <p><span class="fee-label">Low Priority 🐢</span></p>
+        <p><span class="fee-label priority-label">Low Priority 🐢</span></p>
         <p><span class="fee-rate" id="one-hour-fee">Loading...</span></p>
       </div>
     </div>
@@ -63,7 +62,7 @@
       <p>Blocks left to be mined: <span id="blocks-left"></span></p>
     </div>
 
-    <!-- Countdown script -->
+
 <script>
   // Set the target date for the countdown
   const targetDate = new Date("2024-04-28T00:00:00").getTime();
