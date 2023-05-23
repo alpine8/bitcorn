@@ -39,14 +39,28 @@ async function updateBitcoinToCorn() {
 
 // ALWAYS CORN!!!
 
-// Fetch Bitcoin fee rates
 async function fetchBitcoinFeeRates() {
   try {
     const response = await fetch('https://mempool.space/api/v1/fees/recommended');
     const data = await response.json();
-    fastestFee.textContent = `${data.fastestFee} sat/vB`;
-    halfHourFee.textContent = `${data.halfHourFee} sat/vB`;
-    oneHourFee.textContent = `${data.hourFee} sat/vB`;
+
+    // Get the current Bitcoin price in USD
+    const btcPrice = await fetchBitcoinPrice();
+
+    // Conversion function
+    function satFeeToUsd(feeSat) {
+      const satoshis = feeSat * 140; // Multiply sat/vB by an average tx size in vbytes (assume 140 vbytes)
+      const btcAmount = satoshis / 100000000; // Convert satoshis to BTC
+      return btcAmount * btcPrice; // Convert BTC to USD using the BTC price
+    }
+
+    const fastFeeUsd = satFeeToUsd(data.fastestFee);
+    const mediumFeeUsd = satFeeToUsd(data.halfHourFee);
+    const slowFeeUsd = satFeeToUsd(data.hourFee);
+
+    document.getElementById('fastest-fee').innerHTML = `<span class="fee-rate-value">${data.fastestFee} sat/vB</span><br/><span style="color: #b19cd9">$${fastFeeUsd.toFixed(2)} USD</span>`;
+    document.getElementById('half-hour-fee').innerHTML = `<span class="fee-rate-value">${data.halfHourFee} sat/vB</span><br/><span style="color: #b19cd9">$${mediumFeeUsd.toFixed(2)} USD</span>`;
+    document.getElementById('one-hour-fee').innerHTML = `<span class="fee-rate-value">${data.hourFee} sat/vB</span><br/><span style="color: #b19cd9">$${slowFeeUsd.toFixed(2)} USD</span>`;
 
     // Add the flash-white class to the elements
     fastestFee.classList.add('flash');
@@ -64,6 +78,8 @@ async function fetchBitcoinFeeRates() {
     console.error('Error fetching Bitcoin fee rates:', error);
   }
 }
+
+
 
 function sanitizeHTML(str) {
   const tempDiv = document.createElement('div');
