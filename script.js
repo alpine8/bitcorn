@@ -8,10 +8,11 @@ const latestBlocks = document.getElementById('latest-blocks');
 // Fetch the current Bitcoin price
 async function fetchBitcoinPrice() {
   try {
-    const response = await fetch('https://api.coincap.io/v2/rates/bitcoin');
+    const response = await fetch('https://api.coinpaprika.com/v1/ticker/btc-bitcoin?quote=USD');
     const data = await response.json();
-    const price = data.data.rateUsd;
+    const price = data.price_usd;
     btcPrice.textContent = `${parseFloat(price).toFixed(2)} USD`;
+    btcPrice.style.color = "#ffb86c";
 
     // Add the flash class to animate the text
     btcPrice.classList.add('flash');
@@ -50,7 +51,7 @@ async function fetchBitcoinFeeRates() {
     // Conversion function
     function satFeeToUsd(feeSat) {
       const satoshis = feeSat * 140; // Multiply sat/vB by an average tx size in vbytes (assume 140 vbytes)
-      const btcAmount = satoshis / 100000000; // Convert satoshis to BTC
+      const btcAmount = satoshis / 100000000; // Convert sats to BTC
       return btcAmount * btcPrice; // Convert BTC to USD using the BTC price
     }
 
@@ -58,16 +59,17 @@ async function fetchBitcoinFeeRates() {
     const mediumFeeUsd = satFeeToUsd(data.halfHourFee);
     const slowFeeUsd = satFeeToUsd(data.hourFee);
 
-    document.getElementById('fastest-fee').innerHTML = `<span class="fee-rate-value">${data.fastestFee} sat/vB</span><br/><span style="color: #b19cd9">$${fastFeeUsd.toFixed(2)} USD</span>`;
-    document.getElementById('half-hour-fee').innerHTML = `<span class="fee-rate-value">${data.halfHourFee} sat/vB</span><br/><span style="color: #b19cd9">$${mediumFeeUsd.toFixed(2)} USD</span>`;
-    document.getElementById('one-hour-fee').innerHTML = `<span class="fee-rate-value">${data.hourFee} sat/vB</span><br/><span style="color: #b19cd9">$${slowFeeUsd.toFixed(2)} USD</span>`;
+    // Update the DOM elements with the new fee rates
+    fastestFee.innerHTML = `<span class="fee-rate-value">${data.fastestFee} sat/vB</span><br/><span style="color: #b48ead">$${fastFeeUsd.toFixed(2)} USD</span>`;
+    halfHourFee.innerHTML = `<span class="fee-rate-value">${data.halfHourFee} sat/vB</span><br/><span style="color: #b48ead">$${mediumFeeUsd.toFixed(2)} USD</span>`;
+    oneHourFee.innerHTML = `<span class="fee-rate-value">${data.hourFee} sat/vB</span><br/><span style="color: #b48ead">$${slowFeeUsd.toFixed(2)} USD</span>`;
 
-    // Add the flash-white class to the elements
+    // Add the flash class to the elements
     fastestFee.classList.add('flash');
     halfHourFee.classList.add('flash');
     oneHourFee.classList.add('flash');
 
-    // Remove the flash-white class after the animation has completed (1 second)
+    // Remove the flash class after the animation has completed (1 second)
     setTimeout(() => {
       fastestFee.classList.remove('flash');
       halfHourFee.classList.remove('flash');
@@ -107,7 +109,7 @@ async function fetchLatestBlocks() {
       const blockHeightLinkMempool = document.createElement('a');
       blockHeightLinkMempool.href = `https://mempool.space/block/${block.id}`;
       blockHeightLinkMempool.textContent = block.height;
-      blockHeightLinkMempool.style.color = 'orange';
+      blockHeightLinkMempool.style.color = '#ffb86c';
       blockHeight.appendChild(blockHeightLinkMempool);
 
       const separator = document.createTextNode(' | ');
@@ -116,7 +118,7 @@ async function fetchLatestBlocks() {
       const blockHeightLinkBitfeed = document.createElement('a');
       blockHeightLinkBitfeed.href = `https://bitfeed.live/block/${block.id}`;
       blockHeightLinkBitfeed.textContent = block.height;
-      blockHeightLinkBitfeed.style.color = 'teal';
+      blockHeightLinkBitfeed.style.color = '#8be9fd';
       blockHeight.appendChild(blockHeightLinkBitfeed);
 
       row.appendChild(blockHeight);
@@ -282,9 +284,9 @@ fetchBitcoinHashRate();
 fetchLightningStats();
 updateBitcoinToCorn();
 
-setInterval(fetchBitcoinPrice, 7000); // Update the price every 7 seconds (7,000 ms)
-setInterval(fetchBitcoinFeeRates, 10000); // Update the fee rates every 10 seconds (10,000 ms)
-setInterval(fetchLatestBlocks, 60000); // Update the latest blocks every 60 seconds (60,000 ms)
-setInterval(fetchBitcoinHashRate, 60000); // Update the hash rate every 60 seconds (60,000 ms)
-setInterval(fetchLightningStats, 120000); // Update the Lightning Stats every 2 minutes
-setInterval(updateBitcoinToCorn, 60000); // Update the conversion every minute
+setInterval(fetchBitcoinPrice, 13000); // Update the price every 13 seconds
+setInterval(fetchBitcoinFeeRates, 15000); // Update the fee rates every 15 seconds
+setInterval(fetchLatestBlocks, 150000); // Update the latest blocks every 2.5 minutes
+setInterval(fetchBitcoinHashRate, 3600000); // Update the hash rate every 60 minutes
+setInterval(fetchLightningStats, 360000); // Update the Lightning Stats every 60 minutes
+setInterval(updateBitcoinToCorn, 300000); // Update the conversion every 5 minutes
