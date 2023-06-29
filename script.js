@@ -162,13 +162,9 @@ async function fetchBitcoinData() {
       supply: 'Supply',
       maxSupply: 'Max Supply',
       marketCapUsd: 'Market Cap',
-      volumeUsd24Hr: 'Volume (24hr)',
-      priceUsd: 'Price (USD)',
-      changePercent24Hr: '% Change (24hr)',
-      // Add more key mappings as needed
     };
 
-    const hiddenKeys = ['id', 'vwap24Hr', 'explorer', 'name'];
+    const hiddenKeys = ['id', 'vwap24Hr', 'explorer', 'name', 'volumeUsd24Hr', 'priceUsd', 'changePercent24Hr'];
 
     for (const key in bitcoinData) {
       // Skip hidden keys
