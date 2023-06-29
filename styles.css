@@ -7,24 +7,24 @@
 body {
   font-family: 'Proto Mono', monospace;
   line-height: 1.6;
-  color: #cfcfcf;
-  background: #1f1f1f;
+  color: #e5e9f0;
+  background: #282a36;
 }
 
 header {
-  background: #121212;
+  background: #282a36;
   padding: 1.5rem 0;
   text-align: center;
 }
 
 .logo {
-  width: 200px;
+  width: 125px;
   height: auto;
   margin-right: 0px;
 }
 
 header h1 {
-  color: #fff;
+  color: #e5e9f0;
   margin: 0;
 }
 
@@ -43,13 +43,20 @@ main {
 }
 
 .card {
-  background: #2c2c2c;
-  padding: 1.5rem;
-  border-radius: 5px;
+  background: #44475a;
+  padding: 1rem;
+  border-radius: 7px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   margin-bottom: 1rem;
   flex: 1;
   text-align: center;
+}
+
+.card-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
 }
 
 .card h2 {
@@ -68,7 +75,7 @@ main {
   background: linear-gradient(to bottom, #333333 0%, #2c2c2c 100%);
   box-shadow: inset 0 -2px 2px rgba(0, 0, 0, 0.25);
   border-bottom: 1px solid #1f1f1f;
-  color: #fff;
+  color: #e5e9f0;
 }
 
 .card table tbody tr:nth-child(odd) {
@@ -106,7 +113,7 @@ main {
 }
 
 #progress-bar {
-  background-color: orange;
+  background-color: #ffb86c;
   height: 100%;
   width: 0;
 }
@@ -116,17 +123,17 @@ main {
 }
 
 #latest-blocks a {
-  color: orange;
+  color: #ffb86c;
   text-decoration: none;
 }
 
 #latest-blocks a:hover {
-  color: darkorange;
+  color: #ff5555;
   text-decoration: underline;
 }
 
 #btc-price, #hash-rate, #btc-to-bigmacs {
-  font-size: 1.75em;
+  font-size: 2em;
 }
 
 #mining-difficulty {
@@ -139,13 +146,13 @@ main {
 
 @keyframes flash {
   0% {
-    color: #cfcfcf;
+    color: #ffb86c;
   }
   50% {
-    color: orange;
+    color: #e5e9f0;
   }
   100% {
-    color: #cfcfcf;
+    color: #ffb86c;
   }
 }
 
@@ -168,32 +175,36 @@ main {
 }
 
 .label {
-  color: white;
+  color: #e5e9f0;
   font-size: 14px;
 }
 
 .value {
-  color: orange;
+  color: #ffb86c;
 }
 
 .separator {
   border: none;
-  border-top: 1px solid #ccc;
+  border-top: 2px solid #e5e9f0;
   margin: 10px 0;
 }
 
 .priority-label {
-  font-size: 1.35rem;
+  font-size: 1.5rem;
+  color: #d8dee9;
 }
 
 .fee-rate-value {
-  font-size: 2rem;
+  font-size: 1.35rem;
+  color: #ffb86c;
 }
 
 .btc-to-corn-value {
-  font-size: 1.75rem; 
+  font-size: 1.75rem;
+  color: #ffb86c;
 }
 
 .cornstats-title {
-  font-size: 2.5rem;
+  font-size: 2rem;
+  color: #e5e9f0;
 }
