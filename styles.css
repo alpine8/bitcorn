@@ -8,11 +8,11 @@ body {
   font-family: 'Proto Mono', monospace;
   line-height: 1.6;
   color: #e5e9f0;
-  background: #282a36;
+  background: #4B565C;
 }
 
 header {
-  background: #282a36;
+  background: #4B565C;
   padding: 1.5rem 0 0.5rem;
   text-align: center;
 }
@@ -43,7 +43,7 @@ main {
 }
 
 .card {
-  background: #44475a;
+  background: #5C6A72;
   padding: 1rem;
   border-radius: 7px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
@@ -79,14 +79,14 @@ main {
 }
 
 .card table tbody tr:nth-child(odd) {
-  background-color: #333333;
+  background-color: #5C6A72;
 }
 
 .card table tbody td,
 .card table tbody th {
   padding: 0.5rem 0;
-  border-top: 1px solid #1f1f1f;
-  border-bottom: 1px solid #3b3b3b;
+  border-top: 1px solid #5C6A72;
+  border-bottom: 1px solid #5C6A72;
 }
 
 .card table tbody td:first-child,
@@ -113,7 +113,7 @@ main {
 }
 
 #progress-bar {
-  background-color: #ffb86c;
+  background-color: #DBBC7F;
   height: 100%;
   width: 0;
 }
@@ -123,7 +123,7 @@ main {
 }
 
 #latest-blocks a {
-  color: #ffb86c;
+  color: #DBBC7F;
   text-decoration: none;
 }
 
@@ -146,13 +146,13 @@ main {
 
 @keyframes flash {
   0% {
-    color: #ffb86c;
+    color: #DBBC7F;
   }
   50% {
     color: #e5e9f0;
   }
   100% {
-    color: #ffb86c;
+    color: #DBBC7F;
   }
 }
 
@@ -180,7 +180,7 @@ main {
 }
 
 .value {
-  color: #ffb86c;
+  color: #DBBC7F;
 }
 
 .separator {
@@ -196,12 +196,12 @@ main {
 
 .fee-rate-value {
   font-size: 1.35rem;
-  color: #ffb86c;
+  color: #DBBC7F;
 }
 
 .btc-to-corn-value {
   font-size: 1.75rem;
-  color: #ffb86c;
+  color: #DBBC7F;
 }
 
 .cornstats-title {
