@@ -1,15 +1,20 @@
-There will be transaction fees, so nodes will have an incentive to receive and include all the transactions they can. Nodes will eventually be compensated by transaction fees alone when the total coins created hits the pre-determined ceiling.
-With e-currency based on cryptographic proof, without the need to trust a third party middleman, money can be secure and transactions effortless.
+I've been working on a new electronic cash system that's fully peer-to-peer, with no trusted third party.
 I would be surprised if 10 years from now we're not using electronic currency in some way, now that we know a way to do it that won't inevitably get dumbed down when the trusted third party gets cold feet.
-Being open source means anyone can independently review the code. If it was closed source, nobody could verify the security. I think it's essential for a program of this nature to be open source.
-It's not a problem if transactions have to wait one or a few extra cycles to get into a block.
-For greater privacy, it's best to use bitcoin addresses only once.
-You could use TOR if you don't want anyone to know you're even using Bitcoin.
-Bitcoin is still very new and has not been independently analysed. If you're serious about privacy, TOR is an advisable precaution.
+SHA-256 is very strong. It's not like the incremental step from MD5 to SHA1. It can last several decades unless there's some massive breakthrough attack.
+In a few decades when the reward gets too small, the transaction fee will become the main compensation for nodes.
+It would have been nice to get this attention in any other context. WikiLeaks has kicked the hornet's nest, and the swarm is headed towards us.
+Governments are good at cutting off the heads of a centrally controlled networks like Napster, but pure P2P networks like Gnutella and Tor seem to be holding their own.
+I am not Dorian Nakamoto.
+It might make sense just to get some in case it catches on. If enough people think the same way, that becomes a self fulfilling prophecy.
+The network is robust in its unstructured simplicity. Nodes work all at once with little coordination.
+The requirement is that the good guys collectively have more CPU power than any single attacker.
+If you're sad about paying the fee, you could always turn the tables and run a node yourself and maybe someday rake in a 0.44 fee yourself.
 Yes, but we can win a major battle in the arms race and gain a new territory of freedom for several years.
 It's very attractive to the libertarian viewpoint if we can explain it properly. I'm better with code than with words though.
-I am not Dorian Nakamoto.
-SHA-256 is very strong. It's not like the incremental step from MD5 to SHA1. It can last several decades unless there's some massive breakthrough attack.
-Governments are good at cutting off the heads of a centrally controlled networks like Napster, but pure P2P networks like Gnutella and Tor seem to be holding their own.
-Writing a description for this thing for general audiences is bloody hard. There's nothing to relate it to.
-It would have been nice to get this attention in any other context. WikiLeaks has kicked the hornet's nest, and the swarm is headed towards us.
+At equilibrium size, many nodes will be server farms with one or two network nodes that feed the rest of the farm over a LAN.
+For greater privacy, it's best to use bitcoin addresses only once.
+You could use TOR if you don't want anyone to know you're even using Bitcoin.
+It is strictly necessary that the longest chain is always considered the valid one.
+The credential that establishes someone as real is the ability to supply CPU power.
+It's not a problem if transactions have to wait one or a few extra cycles to get into a block.
+Being open source means anyone can independently review the code.
