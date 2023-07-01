@@ -4,12 +4,11 @@ const fastestFee = document.getElementById('fastest-fee');
 const halfHourFee = document.getElementById('half-hour-fee');
 const oneHourFee = document.getElementById('one-hour-fee');
 const latestBlocks = document.getElementById('latest-blocks');
-const url = 'https://corsproxy.io/?' + encodeURIComponent('https://api.coinpaprika.com/v1/ticker/btc-bitcoin?quote=USD');
 
 // Fetch the current Bitcoin price
 async function fetchBitcoinPrice() {
   try {
-    const response = await fetch('https://corsproxy.io/?https://api.coinpaprika.com/v1/ticker/btc-bitcoin?quote=USD');
+    const response = await fetch('https://api.coinpaprika.com/v1/ticker/btc-bitcoin?quote=USD');
     const data = await response.json();
     const price = data.price_usd;
     btcPrice.textContent = `${parseFloat(price).toFixed(2)} USD`;
@@ -267,6 +266,16 @@ async function cycleQuotes() {
   setInterval(() => {
     displayQuote(quotes);
   }, 10000); // Change quotes every 10 seconds
+}
+
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function() {
+    navigator.serviceWorker.register('/service-worker.js').then(function(registration) {
+      console.log('Service Worker is registered', registration);
+    }, function(err) {
+      console.log('Service Worker registration failed: ', err);
+    });
+  });
 }
 
 

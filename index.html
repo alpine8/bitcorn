@@ -4,9 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Bitcorn - Bitcoin Live Price</title>
-  <script type="text/javascript" nonce="105b4cff00a0490799ab599f052" src="//local.adguard.org?ts=1688009522229&amp;type=content-script&amp;dmn=wla1.wndp.pt:2222&amp;url=https%3A%2F%2Fwla1.wndp.pt%3A2222%2FCMD_FILE_MANAGER%3Fpath%3D%2Fdomains%2Fbitcorn.lol%2Fpublic_html%2Findex.html%26X-DirectAdmin-Session-ID%3D7GKXRT7HJNTISVM5SSWLMQ5FY5SQLUWOPPUP2YQ%26noredirect%3Dtrue&amp;app=com.apple.Safari&amp;css=3&amp;js=1&amp;rel=1&amp;rji=1&amp;sbe=1"></script>
-<script type="text/javascript" nonce="105b4cff00a0490799ab599f052" src="//local.adguard.org?ts=1688009522229&amp;name=AdGuard%20Extra&amp;type=user-script"></script><link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="manifest" href="/manifest.json">
 </head>
 <body>
   <header>
@@ -14,11 +14,6 @@
       <img src="cornstat.png" alt="Logo" class="logo" />
     </a>
     <h1 class="cornstats-title">Bitcorn</h1>
-
-    <div class="card quote-card">
-      <p id="quote-text">Loading...</p>
-      <p id="quote-source">- Satoshi Nakamoto</p>
-    </div>
   </header>
   <main>
     <div class="flex-container">
@@ -116,6 +111,10 @@
   updateCountdown();
 </script>
 
+    <div class="card">
+      <p id="quote-text">Loading...</p>
+      <p id="quote-source">- Satoshi Nakamoto</p>
+    </div>
     <div class="card">
       <h2>Lightning Network ⚡</h2>
       <table>
