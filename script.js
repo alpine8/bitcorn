@@ -270,7 +270,7 @@ async function cycleQuotes() {
 
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', function() {
-    navigator.serviceWorker.register('/service-worker.js').then(function(registration) {
+    navigator.serviceWorker.register('/sw.js').then(function(registration) {
       console.log('Service Worker is registered', registration);
     }, function(err) {
       console.log('Service Worker registration failed: ', err);
