@@ -5,25 +5,47 @@ const halfHourFee = document.getElementById('half-hour-fee');
 const oneHourFee = document.getElementById('one-hour-fee');
 const latestBlocks = document.getElementById('latest-blocks');
 
-// Fetch the current Bitcoin price from CoinCap API
+
+
+// Define an array of API endpoints
+const apiEndpoints = [
+  'https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd',
+  'https://api.coincap.io/v2/assets/bitcoin',
+];
+
+// Current API index
+let currentApiIndex = 0;
+
+// Fetch the current Bitcoin price
 async function fetchBitcoinPrice() {
   try {
-    const response = await fetch('https://api.coincap.io/v2/assets/bitcoin');
+    const currentApiEndpoint = apiEndpoints[currentApiIndex];
+    const response = await fetch(currentApiEndpoint);
     const data = await response.json();
-    
+
     if (response.ok) {
-      const price = data.data.priceUsd;
+      let price;
+
+      if (currentApiEndpoint.includes('coingecko')) {
+        price = data.bitcoin.usd;
+      } else if (currentApiEndpoint.includes('coincap')) {
+        price = data.data.priceUsd;
+      }
+
       btcPrice.textContent = `${parseFloat(price).toFixed(2)} USD`;
       btcPrice.style.color = "#FFB86C";
-  
+
       // Add the flash class to animate the text
       btcPrice.classList.add('flash');
-  
+
       // Remove the flash class after the animation is completed
       setTimeout(() => {
         btcPrice.classList.remove('flash');
       }, 1000);
-  
+
+      // Toggle the current API index for the next fetch
+      currentApiIndex = (currentApiIndex + 1) % apiEndpoints.length;
+
       return parseFloat(price);
     } else {
       console.error('Error fetching Bitcoin price:', data.error);
@@ -32,7 +54,6 @@ async function fetchBitcoinPrice() {
     console.error('Error fetching Bitcoin price:', error);
   }
 }
-
 
 
 // HOW MUCH CORN??? 
