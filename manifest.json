@@ -3,11 +3,40 @@
     "name": "Bitcorn - Live Bitcoin Price",
     "icons": [
       {
-        "src": "/icon512x.webp",
-        "sizes": "512x512",
-        "type": "image/webp",
+        "src": "/ios/180.png",
+        "sizes": "180x180",
+        "type": "image/png",
+        "purpose": "maskable"
+      },
+
+      {
+        "src": "/ios/120.png",
+        "sizes": "120x120",
+        "type": "image/png",
+        "purpose": "maskable"
+      },
+
+      {
+        "src": "/ios/167.png",
+        "sizes": "167x167",
+        "type": "image/png",
+        "purpose": "maskable"
+      },
+
+      {
+        "src": "/ios/152.png",
+        "sizes": "152x152",
+        "type": "image/png",
+        "purpose": "maskable"
+      },
+
+      {
+        "src": "/ios/1024.png",
+        "sizes": "1024x1024",
+        "type": "image/png",
         "purpose": "maskable"
       }
+      
     ],
     "start_url": "/",
     "background_color": "#282A36",
