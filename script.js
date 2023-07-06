@@ -5,29 +5,94 @@ const halfHourFee = document.getElementById('half-hour-fee');
 const oneHourFee = document.getElementById('one-hour-fee');
 const latestBlocks = document.getElementById('latest-blocks');
 
+// Define an array of API endpoints
+const apiEndpoints = [
+  'https://api.coinpaprika.com/v1/ticker/btc-bitcoin?quote=USD',
+  'https://api.coincap.io/v2/assets/bitcoin',
+  `https://pro-api.coinmarketcap.com/v1/cryptocurrency/quotes/latest?symbol=BTC&convert=USD`,
+  // Add more API endpoints as needed
+];
+
+// Current API index
+let currentApiIndex = 0;
+
+// CoinMarketCap API key
+const coinMarketCapApiKey = '71eac498-e962-4060-89ad-63562386852b';
+
 // Fetch the current Bitcoin price
 async function fetchBitcoinPrice() {
   try {
-    const response = await fetch('https://api.coinpaprika.com/v1/ticker/btc-bitcoin?quote=USD');
-    const data = await response.json();
-    const price = data.price_usd;
-    btcPrice.textContent = `${parseFloat(price).toFixed(2)} USD`;
-    btcPrice.style.color = "#FFB86C";
+    let price;
+    let error;
 
-    // Add the flash class to animate the text
-    btcPrice.classList.add('flash');
+    for (let i = 0; i < apiEndpoints.length; i++) {
+      const currentApiEndpoint = apiEndpoints[currentApiIndex];
 
-    // Remove the flash class after the animation is completed
-    setTimeout(() => {
-      btcPrice.classList.remove('flash');
-    }, 1000);
+      if (currentApiEndpoint.includes('coinmarketcap')) {
+        const response = await fetch(currentApiEndpoint, {
+          headers: {
+            'X-CMC_PRO_API_KEY': coinMarketCapApiKey
+          }
+        });
 
-    // Return the fetched price
-    return parseFloat(price);
+        if (response.ok) {
+          const data = await response.json();
+          price = data.data.BTC.quote.USD.price;
+          break;
+        } else {
+          error = response.statusText;
+          currentApiIndex = (currentApiIndex + 1) % apiEndpoints.length;
+        }
+      } else {
+        const response = await fetch(currentApiEndpoint);
+
+        if (response.ok) {
+          const data = await response.json();
+
+          // Extract the price based on the API response structure
+          if (currentApiEndpoint.includes('coinpaprika')) {
+            // Check if the response contains "type":"payment_required"
+            if (data.type === 'payment_required') {
+              currentApiIndex = (currentApiIndex + 1) % apiEndpoints.length;
+              continue; // Move to the next API if payment is required
+            }
+
+            price = data.price_usd;
+          } else if (currentApiEndpoint.includes('coincap')) {
+            price = data.data.priceUsd;
+          }
+
+          break;
+        } else {
+          error = response.statusText;
+          currentApiIndex = (currentApiIndex + 1) % apiEndpoints.length;
+        }
+      }
+    }
+
+    if (price !== undefined) {
+      btcPrice.textContent = `${parseFloat(price).toFixed(2)} USD`;
+      btcPrice.style.color = "#FFB86C";
+
+      // Add the flash class to animate the text
+      btcPrice.classList.add('flash');
+
+      // Remove the flash class after the animation is completed
+      setTimeout(() => {
+        btcPrice.classList.remove('flash');
+      }, 1000);
+    } else {
+      console.error('All APIs returned errors. Last error:', error);
+    }
+
+    // Return the fetched price or null if all APIs failed
+    return price !== undefined ? parseFloat(price) : null;
   } catch (error) {
     console.error('Error fetching Bitcoin price:', error);
   }
 }
+
+
 
 // HOW MUCH CORN??? 
 
