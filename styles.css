@@ -8,11 +8,11 @@ body {
   font-family: 'Proto Mono', monospace;
   line-height: 1.6;
   color: #e5e9f0;
-  background: #4B565C;
+  background: #282A36;
 }
 
 header {
-  background: #4B565C;
+  background: #282A36;
   padding: 1.5rem 0 0.5rem;
   text-align: center;
 }
@@ -43,7 +43,7 @@ main {
 }
 
 .card {
-  background: #5C6A72;
+  background: #44475A;
   padding: 1rem;
   border-radius: 7px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
@@ -113,7 +113,7 @@ main {
 }
 
 #progress-bar {
-  background-color: #DBBC7F;
+  background-color: #FFB86C;
   height: 100%;
   width: 0;
 }
@@ -123,13 +123,8 @@ main {
 }
 
 #latest-blocks a {
-  color: #DBBC7F;
+  color: #FFB86C;
   text-decoration: none;
-}
-
-#latest-blocks a:hover {
-  color: #ff5555;
-  text-decoration: underline;
 }
 
 #btc-price, #hash-rate, #btc-to-bigmacs {
@@ -146,13 +141,13 @@ main {
 
 @keyframes flash {
   0% {
-    color: #DBBC7F;
+    color: #FFB86C;
   }
   50% {
-    color: #e5e9f0;
+    color: #FFB86C;
   }
   100% {
-    color: #DBBC7F;
+    color: #FFB86C;
   }
 }
 
@@ -182,7 +177,7 @@ main {
 }
 
 .value {
-  color: #DBBC7F;
+  color: #FFB86C;
 }
 
 .separator {
@@ -198,12 +193,12 @@ main {
 
 .fee-rate-value {
   font-size: 1.35rem;
-  color: #DBBC7F;
+  color: #FFB86C;
 }
 
 .btc-to-corn-value {
   font-size: 1.75rem;
-  color: #DBBC7F;
+  color: #FFB86C;
 }
 
 .cornstats-title {

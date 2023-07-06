@@ -12,7 +12,7 @@ async function fetchBitcoinPrice() {
     const data = await response.json();
     const price = data.price_usd;
     btcPrice.textContent = `${parseFloat(price).toFixed(2)} USD`;
-    btcPrice.style.color = "#DBBC7F";
+    btcPrice.style.color = "#FFB86C";
 
     // Add the flash class to animate the text
     btcPrice.classList.add('flash');
@@ -60,9 +60,9 @@ async function fetchBitcoinFeeRates() {
     const slowFeeUsd = satFeeToUsd(data.hourFee);
 
     // Update the DOM elements with the new fee rates
-    fastestFee.innerHTML = `<span class="fee-rate-value">${data.fastestFee} sat/vB</span><br/><span style="color: #A7C080">$${fastFeeUsd.toFixed(2)} USD</span>`;
-    halfHourFee.innerHTML = `<span class="fee-rate-value">${data.halfHourFee} sat/vB</span><br/><span style="color: #A7C080">$${mediumFeeUsd.toFixed(2)} USD</span>`;
-    oneHourFee.innerHTML = `<span class="fee-rate-value">${data.hourFee} sat/vB</span><br/><span style="color: #A7C080">$${slowFeeUsd.toFixed(2)} USD</span>`;
+    fastestFee.innerHTML = `<span class="fee-rate-value">${data.fastestFee} sat/vB</span><br/><span style="color: #BD93F9">$${fastFeeUsd.toFixed(2)} USD</span>`;
+    halfHourFee.innerHTML = `<span class="fee-rate-value">${data.halfHourFee} sat/vB</span><br/><span style="color: #BD93F9">$${mediumFeeUsd.toFixed(2)} USD</span>`;
+    oneHourFee.innerHTML = `<span class="fee-rate-value">${data.hourFee} sat/vB</span><br/><span style="color: #BD93F9">$${slowFeeUsd.toFixed(2)} USD</span>`;
 
     // Add the flash class to the elements
     fastestFee.classList.add('flash');
@@ -109,7 +109,7 @@ async function fetchLatestBlocks() {
       const blockHeightLinkMempool = document.createElement('a');
       blockHeightLinkMempool.href = `https://mempool.space/block/${block.id}`;
       blockHeightLinkMempool.textContent = block.height;
-      blockHeightLinkMempool.style.color = '#D699B6';
+      blockHeightLinkMempool.style.color = '#FF79C6';
       blockHeight.appendChild(blockHeightLinkMempool);
 
       const separator = document.createTextNode(' | ');
@@ -118,7 +118,7 @@ async function fetchLatestBlocks() {
       const blockHeightLinkBitfeed = document.createElement('a');
       blockHeightLinkBitfeed.href = `https://bitfeed.live/block/${block.id}`;
       blockHeightLinkBitfeed.textContent = block.height;
-      blockHeightLinkBitfeed.style.color = '#83C092';
+      blockHeightLinkBitfeed.style.color = '#8BE9FD';
       blockHeight.appendChild(blockHeightLinkBitfeed);
 
       row.appendChild(blockHeight);
