@@ -1,1 +1,2 @@
-# cornstats
+# bitcorn
+# early dev
