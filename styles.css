@@ -165,6 +165,7 @@ main {
   src: url('fonts/ProtoMono-Regular.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
@@ -172,6 +173,7 @@ main {
   src: url('fonts/ProtoMono-SemiBold.ttf') format('truetype');
   font-weight: bold;
   font-style: normal;
+  font-display: swap;
 }
 
 .label {
