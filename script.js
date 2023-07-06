@@ -105,22 +105,11 @@ async function fetchLatestBlocks() {
 
       // Block Height
       const blockHeight = document.createElement('td');
-
-      const blockHeightLinkMempool = document.createElement('a');
-      blockHeightLinkMempool.href = `https://mempool.space/block/${block.id}`;
-      blockHeightLinkMempool.textContent = block.height;
-      blockHeightLinkMempool.style.color = '#FF79C6';
-      blockHeight.appendChild(blockHeightLinkMempool);
-
-      const separator = document.createTextNode(' | ');
-      blockHeight.appendChild(separator);
-
-      const blockHeightLinkBitfeed = document.createElement('a');
-      blockHeightLinkBitfeed.href = `https://bitfeed.live/block/${block.id}`;
-      blockHeightLinkBitfeed.textContent = block.height;
-      blockHeightLinkBitfeed.style.color = '#8BE9FD';
-      blockHeight.appendChild(blockHeightLinkBitfeed);
-
+      const blockHeightLink = document.createElement('a');
+      blockHeightLink.href = `https://mempool.space/block/${block.id}`;
+      blockHeightLink.textContent = block.height;
+      blockHeightLink.style.color = '#FF79C6';
+      blockHeight.appendChild(blockHeightLink);
       row.appendChild(blockHeight);
 
       // Timestamp
@@ -143,6 +132,7 @@ async function fetchLatestBlocks() {
     console.error('Error fetching latest Bitcoin blocks:', error);
   }
 }
+
 
 // Fetch Bitcoin data and populate the table
 async function fetchBitcoinData() {
@@ -176,6 +166,9 @@ async function fetchBitcoinData() {
 
       keyCell.textContent = keyMapping[key] || key; // Use the mapped label if available, otherwise use the original key
 
+      // Add color to the text on the left side of the table
+      keyCell.style.color = '#f1fa8c';
+
       // Check if the value is a number and display only 4 decimal places if it is
       if (!isNaN(bitcoinData[key]) && parseFloat(bitcoinData[key])) {
         const formattedNumber = parseFloat(bitcoinData[key]).toFixed(4);
@@ -192,6 +185,7 @@ async function fetchBitcoinData() {
     console.error('Error fetching Bitcoin data:', error);
   }
 }
+
 
 // Fetch Bitcoin hash rate
 async function fetchBitcoinHashRate() {
