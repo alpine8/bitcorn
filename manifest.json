@@ -5,7 +5,8 @@
       {
         "src": "/icon512x.webp",
         "sizes": "512x512",
-        "type": "image/webp"
+        "type": "image/webp",
+        "purpose": "maskable"
       }
     ],
     "start_url": "/",
