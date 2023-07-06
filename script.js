@@ -206,11 +206,19 @@ function fetchLightningStats() {
       const lightningStatsTable = document.getElementById('lightning-stats-table');
       lightningStatsTable.innerHTML = '';
 
-      const keysToDisplay = ['channel_count', 'node_count', 'total_capacity'];
+      const keysToDisplay = ['channel_count', 'node_count', 'total_capacity', 'average_capacity'];
       const keyLabels = {
-        'channel_count': 'Channel Count #️⃣',
-        'node_count': 'Node Count 🖥️',
-        'total_capacity': 'Total Capacity 👥',
+        'channel_count': 'Channel Count',
+        'node_count': 'Node Count',
+        'total_capacity': 'Total Capacity',
+        'average_capacity': 'Average Channel Capacity',
+      };
+
+      const keyColors = {
+        'channel_count': '#f1fa8c',
+        'node_count': '#f1fa8c',
+        'total_capacity': '#f1fa8c',
+        'average_capacity': '#f1fa8c',
       };
 
       for (const key of keysToDisplay) {
@@ -218,18 +226,25 @@ function fetchLightningStats() {
         const cell1 = newRow.insertCell(0);
         const cell2 = newRow.insertCell(1);
         cell1.textContent = keyLabels[key] || key;
+        cell1.style.color = keyColors[key] || 'black';
 
         if (key === 'total_capacity') {
           const capacityInBtc = data.latest[key] / 100000000;
-          const formattedCapacity = parseFloat(capacityInBtc).toLocaleString() + ' BTC';
+          const formattedCapacity = capacityInBtc.toLocaleString(undefined, { maximumFractionDigits: 2 }) + ' BTC';
           cell2.textContent = formattedCapacity;
+        } else if (key === 'average_capacity') {
+          const avgCapacityInSats = data.latest['total_capacity'] / data.latest['channel_count'];
+          const formattedAvgCapacity = Math.floor(avgCapacityInSats).toLocaleString();
+          cell2.textContent = formattedAvgCapacity + ' sats';
         } else {
-          cell2.textContent = data.latest[key];
+          const formattedValue = data.latest[key].toLocaleString();
+          cell2.textContent = formattedValue;
         }
       }
     })
     .catch(error => console.error('Error fetching Lightning Network statistics:', error));
 }
+
 
 async function fetchMiningDifficulty() {
   const response = await fetch('https://blockchain.info/q/getdifficulty');
