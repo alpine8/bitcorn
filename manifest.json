@@ -5,7 +5,7 @@
       {
         "src": "/icon512x.webp",
         "sizes": "512x512",
-        "type": "image/x-icon"
+        "type": "image/webp"
       }
     ],
     "start_url": "/",
