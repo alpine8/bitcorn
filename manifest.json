@@ -3,7 +3,7 @@
     "name": "Bitcorn - Live Bitcoin Price",
     "icons": [
       {
-        "src": "/icon512.svg",
+        "src": "/icon512x.webp",
         "sizes": "512x512",
         "type": "image/x-icon"
       }
