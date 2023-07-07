@@ -208,21 +208,33 @@ main {
 }
 
 .cgrnd-image {
-  width: 65px; /* Set the desired width */
-  height: auto; /* Let the height adjust automatically based on the width */
+  width: 65px;
+  height: auto;
 }
 
 .cc-image {
-  width: 80px; /* Set the desired width */
-  height: auto; /* Let the height adjust automatically based on the width */
+  width: 80px;
+  height: auto;
 }
 
 .mems-image {
-  width: 65px; /* Set the desired width */
-  height: auto; /* Let the height adjust automatically based on the width */
+  width: 65px;
+  height: auto;
 }
 
 .bchain-image {
-  width: 65px; /* Set the desired width */
-  height: auto; /* Let the height adjust automatically based on the width */
+  width: 65px;
+  height: auto;
+}
+
+.mining-pool {
+  display: block;
+}
+
+.orangeText {
+  color: #FFB86C;
+}
+
+.heading {
+  font-size: 1.4em;
 }
