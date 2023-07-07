@@ -314,10 +314,35 @@ if ('serviceWorker' in navigator) {
   });
 }
 
+// Fetch top three mining pools
+async function fetchTopMiningPools() {
+  try {
+    const response = await fetch('https://mempool.space/api/v1/mining/pools/1w');
+    const data = await response.json();
+
+    // Get the three mining pools with the lowest rank (highest score)
+    const topPools = data.pools.slice(0, 3); 
+
+
+    // Get the DOM elements
+    const poolElements = ["pool-1", "pool-2", "pool-3"].map(id => document.getElementById(id));
+
+    // Populate the poolElements with data from topPools 
+    topPools.forEach((pool, i) => {
+      poolElements[i].innerHTML = `${pool.name}: <span class="orangeText">${pool.blockCount}</span> blocks mined`;
+    });
+
+  } catch (error) {
+    console.error('Error fetching top mining pools:', error);
+  }
+}
+
+
 
 
 cycleQuotes();
 fetchMiningDifficulty();
+fetchTopMiningPools();
 fetchBitcoinPrice();
 fetchBitcoinFeeRates();
 fetchLatestBlocks();
@@ -332,3 +357,4 @@ setInterval(fetchLatestBlocks, 150000); // Update the latest blocks every 2.5 mi
 setInterval(fetchBitcoinHashRate, 3600000); // Update the hash rate every 60 minutes
 setInterval(fetchLightningStats, 360000); // Update the Lightning Stats every 60 minutes
 setInterval(updateBitcoinToCorn, 300000); // Update the conversion every 5 minutes
+setInterval(fetchTopMiningPools, 3600000); // Update the mining pools every 30 minutes
