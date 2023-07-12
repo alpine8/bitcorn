@@ -52,6 +52,11 @@ main {
   text-align: center;
 }
 
+.larger-text {
+  font-size: 1.5em;
+}
+
+
 .card-content {
   display: flex;
   flex-direction: column;

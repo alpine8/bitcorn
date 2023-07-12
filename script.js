@@ -5,8 +5,6 @@ const halfHourFee = document.getElementById('half-hour-fee');
 const oneHourFee = document.getElementById('one-hour-fee');
 const latestBlocks = document.getElementById('latest-blocks');
 
-
-
 // Define an array of API endpoints
 const apiEndpoints = [
   'https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd',
@@ -200,6 +198,20 @@ async function fetchBitcoinData() {
       if (!isNaN(bitcoinData[key]) && parseFloat(bitcoinData[key])) {
         const formattedNumber = parseFloat(bitcoinData[key]).toFixed(4);
         valueCell.textContent = Number(formattedNumber).toLocaleString('en');
+      } else {
+        valueCell.textContent = bitcoinData[key];
+      }
+
+      // Check if the value is a number and display only 4 decimal places if it is
+      if (!isNaN(bitcoinData[key]) && parseFloat(bitcoinData[key])) {
+      // Check if the key is 'marketCapUsd' and format it as billions of USD
+        if (key === 'marketCapUsd') {
+          const formattedNumber = (parseFloat(bitcoinData[key]) / 1000000000).toFixed(2);
+          valueCell.textContent = `$${formattedNumber}B USD`;
+        } else {
+          const formattedNumber = parseFloat(bitcoinData[key]).toFixed(4);
+          valueCell.textContent = Number(formattedNumber).toLocaleString('en');
+        }
       } else {
         valueCell.textContent = bitcoinData[key];
       }
