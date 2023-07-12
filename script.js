@@ -349,6 +349,20 @@ async function fetchTopMiningPools() {
   }
 }
 
+// Fetch data from the API
+fetch('https://api.blockchair.com/bitcoin/stats')
+  .then(response => response.json())
+  .then(data => {
+    // Convert blockchain size from bytes to gigabytes
+    const blockchainSizeGB = data.data.blockchain_size / (1000 ** 3);
+
+    // Update the HTML element with the blockchain size
+    document.getElementById('chain-size').textContent = `${blockchainSizeGB.toFixed(2)} GB`;
+  })
+  .catch(error => {
+    console.error('Error:', error);
+  });
+
 
 
 
