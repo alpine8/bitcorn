@@ -400,6 +400,14 @@ fetch('https://api.blockchair.com/bitcoin/stats')
     console.error('Error:', error);
   });
 
+  let isChartVisible = false;
+
+  document.querySelector('.chart-icon').addEventListener('click', function() {
+    const chartContainer = document.getElementById('chartContainer');
+    isChartVisible = !isChartVisible;
+    chartContainer.style.display = isChartVisible ? 'block' : 'none';
+  });
+
 
 
 
