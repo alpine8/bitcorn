@@ -56,6 +56,10 @@ main {
   font-size: 1.5em;
 }
 
+.larger-text-2 {
+  font-size: 1.25em;
+}
+
 
 .card-content {
   display: flex;
@@ -133,7 +137,7 @@ main {
   text-decoration: none;
 }
 
-#btc-price, #hash-rate, #btc-to-bigmacs {
+#btc-price, #hash-rate, #chain-size {
   font-size: 2em;
 }
 
@@ -222,6 +226,12 @@ main {
   height: auto;
 }
 
+.bc-image {
+  width: 100px;
+  height: auto;
+  margin: -20px
+}
+
 .mems-image {
   width: 65px;
   height: auto;
@@ -243,3 +253,4 @@ main {
 .heading {
   font-size: 1.4em;
 }
+
