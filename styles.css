@@ -9,6 +9,7 @@ body {
   line-height: 1.6;
   color: #e5e9f0;
   background: #282A36;
+  padding-bottom: 40px
 }
 
 header {
@@ -254,3 +255,14 @@ main {
   font-size: 1.4em;
 }
 
+.version-banner {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  padding: 10px;
+  background-color: #282A36;
+  color: white;
+  text-align: center;
+  font-size: 14px;
+  z-index: 1000;
+}
