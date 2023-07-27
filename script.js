@@ -211,10 +211,9 @@ async function fetchBitcoinData() {
       supply: 'Circulating Supply',
       maxSupply: 'Max Supply',
       marketCapUsd: 'Market Cap',
-      volumeUsd24Hr: 'Volume (24Hr)',
     };
 
-    const hiddenKeys = ['id', 'vwap24Hr', 'explorer', 'name', 'priceUsd', 'changePercent24Hr'];
+    const hiddenKeys = ['id', 'vwap24Hr', 'explorer', 'name', 'priceUsd', 'changePercent24Hr', 'volumeUsd24Hr'];
 
     for (const key in bitcoinData) {
       // Skip hidden keys
