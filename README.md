@@ -1,2 +1,2 @@
 # bitcorn
-# early dev
+# bitcoin live price and stats dashboard

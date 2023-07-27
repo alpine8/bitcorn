@@ -35,7 +35,7 @@
   //                       `"*-------*"'                  
 
 
-// DOM elements
+x
 const btcPrice = document.getElementById('btc-price');
 const fastestFee = document.getElementById('fastest-fee');
 const halfHourFee = document.getElementById('half-hour-fee');
@@ -207,16 +207,15 @@ async function fetchBitcoinData() {
     tableBody.innerHTML = '';
 
     const keyMapping = {
-      id: 'ID',
       rank: 'Rank',
       symbol: 'Symbol',
-      name: 'Name',
-      supply: 'Supply',
+      supply: 'Circulating Supply',
       maxSupply: 'Max Supply',
       marketCapUsd: 'Market Cap',
+      volumeUsd24Hr: 'Volume (24Hr)',
     };
 
-    const hiddenKeys = ['id', 'vwap24Hr', 'explorer', 'name', 'volumeUsd24Hr', 'priceUsd', 'changePercent24Hr'];
+    const hiddenKeys = ['id', 'vwap24Hr', 'explorer', 'name', 'priceUsd', 'changePercent24Hr'];
 
     for (const key in bitcoinData) {
       // Skip hidden keys
