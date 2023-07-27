@@ -35,7 +35,6 @@
   //                       `"*-------*"'                  
 
 
-x
 const btcPrice = document.getElementById('btc-price');
 const fastestFee = document.getElementById('fastest-fee');
 const halfHourFee = document.getElementById('half-hour-fee');
