@@ -5,15 +5,15 @@
 }
 
 body {
-  font-family: 'Proto Mono', monospace;
+  font-family: "Proto Mono", monospace;
   line-height: 1.6;
   color: #e5e9f0;
-  background: #282A36;
-  padding-bottom: 40px
+  background: #282a36;
+  padding-bottom: 40px;
 }
 
 header {
-  background: #282A36;
+  background: #282a36;
   padding: 1.5rem 0 0.5rem;
   text-align: center;
 }
@@ -44,7 +44,7 @@ main {
 }
 
 .card {
-  background: #44475A;
+  background: #44475a;
   padding: 1rem;
   border-radius: 7px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
@@ -60,7 +60,6 @@ main {
 .larger-text-2 {
   font-size: 1.25em;
 }
-
 
 .card-content {
   display: flex;
@@ -84,20 +83,20 @@ main {
   padding-bottom: 0.5rem;
   text-align: center;
   background: none;
-  border-bottom: 1px solid #44475A;
-  color: #F1FA8C;
+  border-bottom: 1px solid #44475a;
+  color: #f1fa8c;
   outline: none;
 }
 
 .card table tbody tr:nth-child(odd) {
-  background-color: #44475A;
+  background-color: #44475a;
 }
 
 .card table tbody td,
 .card table tbody th {
   padding: 0.5rem 0;
-  border-top: 1px solid #44475A;
-  border-bottom: 1px solid #44475A;
+  border-top: 1px solid #44475a;
+  border-bottom: 1px solid #44475a;
 }
 
 .card table tbody td:first-child,
@@ -124,7 +123,7 @@ main {
 }
 
 #progress-bar {
-  background-color: #FFB86C;
+  background-color: #ffb86c;
   height: 100%;
   width: 0;
 }
@@ -134,11 +133,13 @@ main {
 }
 
 #latest-blocks a {
-  color: #FFB86C;
+  color: #ffb86c;
   text-decoration: none;
 }
 
-#btc-price, #hash-rate, #chain-size {
+#btc-price,
+#hash-rate,
+#chain-size {
   font-size: 2em;
 }
 
@@ -146,19 +147,21 @@ main {
   font-size: 2em;
 }
 
-#fastest-fee, #half-hour-fee, #one-hour-fee {
+#fastest-fee,
+#half-hour-fee,
+#one-hour-fee {
   font-size: 1.25em;
 }
 
 @keyframes flash {
   0% {
-    color: #FFB86C;
+    color: #ffb86c;
   }
   50% {
-    color: #FFB86C;
+    color: #ffb86c;
   }
   100% {
-    color: #FFB86C;
+    color: #ffb86c;
   }
 }
 
@@ -167,16 +170,16 @@ main {
 }
 
 @font-face {
-  font-family: 'Proto Mono';
-  src: url('fonts/ProtoMono-Regular.ttf') format('truetype');
+  font-family: "Proto Mono";
+  src: url("fonts/ProtoMono-Regular.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'Proto Mono';
-  src: url('fonts/ProtoMono-SemiBold.ttf') format('truetype');
+  font-family: "Proto Mono";
+  src: url("fonts/ProtoMono-SemiBold.ttf") format("truetype");
   font-weight: bold;
   font-style: normal;
   font-display: swap;
@@ -188,7 +191,7 @@ main {
 }
 
 .value {
-  color: #FFB86C;
+  color: #ffb86c;
 }
 
 .separator {
@@ -204,12 +207,12 @@ main {
 
 .fee-rate-value {
   font-size: 1.35rem;
-  color: #FFB86C;
+  color: #ffb86c;
 }
 
 .btc-to-corn-value {
   font-size: 1.75rem;
-  color: #FFB86C;
+  color: #ffb86c;
 }
 
 .cornstats-title {
@@ -230,7 +233,7 @@ main {
 .bc-image {
   width: 100px;
   height: auto;
-  margin: -20px
+  margin: -20px;
 }
 
 .mems-image {
@@ -248,7 +251,7 @@ main {
 }
 
 .orangeText {
-  color: #FFB86C;
+  color: #ffb86c;
 }
 
 .heading {
@@ -260,7 +263,7 @@ main {
   bottom: 0;
   width: 100%;
   padding: 10px;
-  background-color: #282A36;
+  background-color: #282a36;
   color: white;
   text-align: center;
   font-size: 14px;
