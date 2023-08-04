@@ -53,12 +53,14 @@ main {
   text-align: center;
 }
 
+/* metrics title and labels + lightning table title and labels */
 .larger-text {
-  font-size: 1.5em;
+  font-size: 1.25em;
 }
 
+/* latest blocks table (no title only data) */
 .larger-text-2 {
-  font-size: 1.25em;
+  font-size: 1.15em;
 }
 
 .card-content {
@@ -254,6 +256,7 @@ main {
   color: #ffb86c;
 }
 
+/* "top 3 pools this week" */
 .heading {
   font-size: 1.4em;
 }
@@ -268,4 +271,5 @@ main {
   text-align: center;
   font-size: 14px;
   z-index: 1000;
+  opacity: 0.8
 }
