@@ -1,3 +1,3 @@
 # bitcorn
-# bitcoin live price and stats dashboard
+# Real Time Updating Dashboard via API for Bitcoin Stats and Information
 ![Alt Text](preview.png)
