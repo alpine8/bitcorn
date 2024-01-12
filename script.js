@@ -55,7 +55,7 @@ async function fetchBitcoinPrice() {
 // HOW MUCH CORN???
 
 async function updateBitcoinToCorn() {
-  const pricePerOunce = 5.3; // Price of Bushel of Corn per USD 07/27/2023
+  const pricePerOunce = 4.66; // Price of Bushel of Corn per USD 01/12/2024
   const btcPrice = await fetchBitcoinPrice();
   const btcToCorn = btcPrice / pricePerOunce;
   document.getElementById("btc-to-corn").textContent = `${btcToCorn.toFixed(
