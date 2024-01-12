@@ -6,8 +6,7 @@ const latestBlocks = document.getElementById("latest-blocks");
 
 // Define an array of API endpoints
 const apiEndpoints = [
-  "https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd",
-  "https://api.coincap.io/v2/assets/bitcoin",
+  "https://api.coincap.io/v2/assets/bitcoin"
 ];
 
 // Current API index
@@ -55,7 +54,7 @@ async function fetchBitcoinPrice() {
 // HOW MUCH CORN???
 
 async function updateBitcoinToCorn() {
-  const pricePerOunce = 4.66; // Price of Bushel of Corn per USD 01/12/2024
+  const pricePerOunce = 4.6; // Price of Bushel of Corn per USD 01/12/2024
   const btcPrice = await fetchBitcoinPrice();
   const btcToCorn = btcPrice / pricePerOunce;
   document.getElementById("btc-to-corn").textContent = `${btcToCorn.toFixed(
